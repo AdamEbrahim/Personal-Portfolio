@@ -8,8 +8,11 @@ import {
   leadership,
   skills,
   getInTouch,
-  experiences
+  experiences,
+  separateProjects
 } from "./editable-stuff/config.js";
+import bloglist from "./editable-stuff/blog.jsx";
+
 import MainBody from "./components/home/MainBody";
 import AboutMe from "./components/home/AboutMe";
 import Project from "./components/home/Project";
@@ -17,11 +20,16 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Skills from "./components/home/Skills";
 // import { Blog } from "./components/blog/Blog";
-// import BlogPost from "./components/blog/BlogPost";
+import BlogPost from "./components/blog/BlogPost";
 import GetInTouch from "./components/home/GetInTouch.jsx";
 import Leadership from "./components/home/Leadership.jsx";
 
 import Experience from "./components/home/Experience";
+
+import PastProjectsHome from "./components/home/PastProjectsHome.jsx";
+import Blog from "./components/blog/Blog.jsx";
+
+import AISquatMonitoringDevice from "./components/projectPages/AISquatMonitoringDevice.jsx";
 
 const Home = React.forwardRef((props, ref) => {
   return (
@@ -47,6 +55,13 @@ const Home = React.forwardRef((props, ref) => {
           <Experience experiences={experiences}/>
         )
       }
+      {separateProjects.show && (
+        <PastProjectsHome 
+          heading={separateProjects.heading}
+          allProjects={bloglist}
+        />
+
+      )}
       {repos.show && (
         <Project
           heading={repos.heading}
@@ -79,10 +94,12 @@ const App = () => {
   const titleRef = React.useRef();
 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL + "/"}>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       {navBar.show && <Navbar ref={titleRef} />}
       <Routes>
         <Route path="/" exact element={<Home ref={titleRef} />} />
+        <Route path="/pastProjects" exact element={<Blog ref={titleRef}/>} />
+        <Route path="/pastProjects/:id" exact element={<BlogPost ref={titleRef}/>} />
       </Routes>
       {/* {false && <Route path="/blog" exact component={Blog} />}
       {false && <Route path="/blog/:id" component={BlogPost} />} */}

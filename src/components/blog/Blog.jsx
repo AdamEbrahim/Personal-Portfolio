@@ -2,10 +2,11 @@ import React from "react";
 import { BlogBuilder } from "./BlogBuilder";
 import bloglist from "../../editable-stuff/blog";
 import { Link } from "react-router-dom";
-const Blog = (props) => {
+
+const Blog = React.forwardRef((props, ref) => {
   return (
     <div className="container-lg mt-5 bg-blue">
-      <h1 className="text-center">Blogs</h1>
+      <h1 ref={ref} className="text-center">Projects</h1>
       {bloglist.map((value, index) => {
         return (
           <BlogCard
@@ -18,7 +19,7 @@ const Blog = (props) => {
       })}
     </div>
   );
-};
+});
 
 const BlogCard = ({ index, title, image, description }) => {
   return (
@@ -32,7 +33,7 @@ const BlogCard = ({ index, title, image, description }) => {
             <div className="">
               <h1 className="">{title}</h1>
               <p className="lead">{description}</p>
-              <Link to={`${process.env.PUBLIC_URL}blog/${index}`}>
+              <Link to={`${index}`}>
                 Read more...{" "}
               </Link>
             </div>
@@ -44,4 +45,4 @@ const BlogCard = ({ index, title, image, description }) => {
   );
 };
 
-export { Blog, BlogBuilder };
+export default Blog
