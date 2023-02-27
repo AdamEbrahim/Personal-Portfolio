@@ -43,7 +43,7 @@ const about = {
   imageSize: 375,
   message:
     "My name is Adam Ebrahim, and I’m an Electrical/Computer Engineering and Computer Science student at Duke University. I hope to pursue my goal of working at the intersection of software and hardware.",
-  resume: require("../editable-stuff/AdamEResume22-23Copy.pdf"),
+  resume: require("../editable-stuff/AdamEResume22-23copy.pdf"),
 };
 
 // PROJECTS SECTION
