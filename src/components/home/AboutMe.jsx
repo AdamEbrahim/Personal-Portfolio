@@ -16,8 +16,9 @@ const AboutMe = ({ heading, message, link, imgSize, resume }) => {
       const instaLink = "https://www.instagram.com/";
       const instaQuery = "/?__a=1";
       try {
-        const response = await axios.get(instaLink + link + instaQuery);
-        setProfilePicUrl(response.data.graphql.user.profile_pic_url_hd);
+        //const response = await axios.get(instaLink + link + instaQuery);
+        setShowPic(false);
+        //setProfilePicUrl(response.data.graphql.user.profile_pic_url_hd);
       } catch (error) {
         setShowPic(false);
         console.error(error.message);
@@ -25,9 +26,11 @@ const AboutMe = ({ heading, message, link, imgSize, resume }) => {
     };
 
     if (link && !pictureLinkRegex.test(link)) {
-      handleRequest();
+      setShowPic(false);
+      //handleRequest();
     } else {
-      setProfilePicUrl(link);
+      setShowPic(false);
+      //setProfilePicUrl(link);
     }
   }, [link]);
 
