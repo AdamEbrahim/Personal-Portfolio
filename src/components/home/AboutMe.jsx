@@ -70,6 +70,7 @@ const AboutMe = ({ heading, message, link, imgSize, resume }) => {
         </div>
       </div>
     </Jumbotron>
+    
   );
 };
 

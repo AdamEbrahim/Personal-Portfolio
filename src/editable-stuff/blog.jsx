@@ -95,10 +95,65 @@ const blog3 = new BlogBuilder({
     "The robot was built using an Arduino Mega 2560 microcontroller, servos, a BOE shield, an XBee communication module, electrical components, and various sensors including QTI and RGB sensors. The code was written in the Arduino programming language."
   );
 
+  const blog4 = new BlogBuilder({
+    title: "Ultrasound Transmitter Device",
+    image: require('../assets/img/UltrasoundTransmitter.jpg'),
+    description:
+      "Created a standalone embedded systems device with a easy-to-use UI that generates ultrasound waves with the desired parameters to drive transducers.",
+  })
+    .addHeading("About the Project")
+    .addParagraph(
+      "During my internship at a startup in Durham, NC, I led the development of an embedded systems device using Arduino microcontrollers, PCBs, and other electrical components/chips to generate ultrasound waves capable of driving transducers.\
+       This involved writing a comprehensive Arduino software to provide an easy-to-use UI for users to program the device to output ultrasound waves with their desired parameters."
+    )
+    .addHeading("Features")
+    .addParagraph(
+      "For the sake of confidentiality, I will not divulge in-depth information about the features of the device. Different aspects of the device that I was able to work on include: soldering and wiring on PCBs, working with and building off circuit diagrams/schematics, iteration upon previous designs, integrating different chips/electrical components into a holistic design, creating an API to program registers and SRAM of the ultrasound board, and creating a UI for users to interact with the device (either physical through an OLED screen and knob or over serial port). Different protocols I worked with in Arduino include SPI and I2C."
+    )
+    .addHeading("Technologies and Languages Used")
+    .addParagraph(
+      "The hardware for the device included a designed PCB, an ultrasound board with an SPI-programmable chip, Adafruit Feather RP2040 microcontrollers, DACs, clock generators, DC converters/amplifiers, level shifters, and other electrical components. The code for the UI and to program the ultrasound board was written in the Arduino programming language."
+    );
+
+    const blog5 = new BlogBuilder({
+      title: "Computer Vision Droplet Characterization",
+      image: require('../assets/img/DropletImage.png'),
+      description:
+        "Created a custom object tracking module in Python/OpenCV that uses image preprocessing techniques and interpolation to detect, track, and take measurements of in-focus aerosol droplets from videos without significant slowdown.",
+    })
+      .addHeading("About the Project")
+      .addParagraph(
+        "During my internship at a startup in Durham, NC, I	created a custom object tracking module in Python with OpenCV to perform droplet characterization on videos of aerosol droplets flowing across the screen. The software uses image preprocessing techniques and mathematical interpolation to detect, track, and take measurements of aerosol droplets that are in-focus, and the lightweight nature of the module results in minimal slowdown when processing the video.\
+        This software was created to solve the need for a faster, automatic approach to measuring the diameter and velocity of aerosol droplets. Previous methods of obtaining these useful metrics involved the time-intensive process of manually cycling through videos, taking screenshots of frames where in-focus droplets were present, using an external software to measure pixel values, and then manually calculating the diameter and velocity through some conversion factor. This software, however, does this all automatically along with introducing features not able to be achieved when manually taking measurements. An example of the software in action is shown below."
+      )
+      .addVideo("/dropSoftwareVideo.mp4")
+      .addHeading("Features")
+      .addParagraph(
+        "I created a user-input based initialization system that allows the user to customize the settings of the droplet tracking software prior to processing the video. During this stage, the user will provide what is known as a 'calibration droplet' (either in the form of a video or an image), which \
+        is a droplet that they already have measured the diameter of. Because image preprocessing techniques to automatically isolate and detect droplets need to be unique to the type of background and the types of external noise present in a frame, I implemented a feedback loop based system to allow the user to change key preprocessing parameters (level of gaussian blur, thresholding values, etc.) while being able to see how it changes what gets detected in a frame. This allows users to continue changing parameters for the calibration image preprocessing until they find that the correct droplet is able to be detected by the software. \
+        One issue that came up is that oftentimes the droplet in the calibration image would be slightly out of frame due to camera constraints. Thus, to solve this, I implemented an alternative method of getting calibration measurements specifically designed for out-of-frame droplets that used contour tracking and detection. \
+        Once the correct calibration droplet is detected, the user provides its diameter and the software resizes the image to ensure measurements are consistent across the calibration image and the video to be processed, and then it calculates a conversion factor between pixels on the frame and meaningful units (typically on the scale of micrometers)."
+      )
+      .addParagraph(
+        "The user then has the option to change preprocessing parameters for the video of droplets that they want the software to analyze. This allows for, again, videos with different backgrounds or levels of noise to be properly analyzed. Finally, the user provides the frames-per-second of the video of droplets flowing, which typically is anywhere from 1000-10000 due to the high FPS required for the camera to keep up with the speed of aerosol droplets. \
+        Then, the software processes the video. It detects only the in-focus droplets in each frame of the video using a simple blob detector (or using contour-based measurements for droplets that are a bit out of frame), uses the calculated conversion factor to obtain each droplets diameter, and uses the object tracker I designed to obtain a velocity calculation as the droplet flows across the screen. To track the droplets across frames, I found the tracking modules on OpenCV to cause to much slowdown on the video processing. Instead, I created my own object tracking class to track a single droplet across frames since I could make it much more lightweight. To do this, I utilized concepts such as mathematical interpolation to track a droplets path and \
+        proximity measurements to assign each droplet detected in subsequent frames to a uniquely identified droplet in a previous frame, all while accounting for droplets entering and exiting the frame as they flow."
+      )
+      .addParagraph(
+        "One more thing to address is the software's method of distinguishing between in-focus and out-of-focus droplets that appear in a frame of the video. It was necessary that the calculations only be made for in-focus droplets since those are the ones that flowed at the correct distance from the camera for the measurements obtained through the calibration image to be accurate.\
+        To do this, the image processing that gets done on each frame is able to eliminate the blur around droplets and isolate the dark centers. The droplets that are in-focus have less blurred edges and therefore once the blur is removed, their dark centers remain circular. Out-of-focus droplets on the other hand lose their circularity and only an elliptical section is left. So, these circularity and darkness parameters (a result of changing the binary-thresholding values) are able to detect in-focus droplets. \
+        These parameters are also tunable by the user if they find that different ones are needed for the particular video they are trying to process. The high customizability of the software allows for it to be used for a much larger array of videos."
+      )
+      .addHeading("Technologies and Languages Used")
+      .addParagraph(
+        "The code was written in Python and used the OpenCV library."
+      );
+
+bloglist.push(blog4);
+bloglist.push(blog5)
+bloglist.push(blog2);
 bloglist.push(blog1);
 bloglist.push(blog);
-
-bloglist.push(blog2);
 bloglist.push(blog3);
 
 

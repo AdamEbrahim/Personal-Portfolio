@@ -7,6 +7,7 @@ const Footer = (props) => {
   return (
     <footer style={bgStyle} className="mt-auto py-5 text-center ">
       <Container>
+        {props.children}
 
       </Container>
     </footer>

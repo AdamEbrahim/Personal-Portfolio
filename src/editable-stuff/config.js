@@ -43,7 +43,7 @@ const about = {
   imageSize: 375,
   message:
     "My name is Adam Ebrahim, and I’m an Electrical/Computer Engineering and Computer Science student at Duke University. I hope to pursue my goal of working at the intersection of software and hardware.",
-  resume: require("../editable-stuff/AdamEResume22-23copy.pdf"),
+  resume: require("../editable-stuff/AdamEResume23-24copy.pdf"),
 };
 
 // PROJECTS SECTION
@@ -97,31 +97,31 @@ const skills = {
     { name: "Java", value: 75 },
     { name: "SQL", value: 50 },
     { name: "C", value: 55 },
-    { name: "Python", value: 35 },
+    { name: "Python", value: 65 },
     { name: "JavaScript", value: 40 },
-    { name: "Lua", value: 45 },
-    { name: "Golang", value: 55 },
-    { name: "Ruby", value: 30 },
+    { name: "Golang", value: 50 },
+    { name: "Lua", value: 40 },
+    { name: "Arduino", value: 60 },
   ],
   softSkills: [
     { name: "Git", value: 70 },
     { name: "React", value: 65 },
-    { name: "OpenCV", value: 50 },
-    { name: "Microcontrollers/Microprocessors", value: 70 },
-    { name: "Ruby on Rails", value: 60 },
+    { name: "OpenCV", value: 55 },
+    { name: "Microcontrollers/Microprocessors", value: 65 },
+    { name: "Ruby on Rails", value: 55 },
     { name: "PostgreSQL", value: 65 },
     { name: "TensorFlow", value: 50 },
-    { name: "Redux", value: 65 },
+    { name: "Redux", value: 55 },
   ],
 };
 
 // GET IN TOUCH SECTION
 const getInTouch = {
-  show: false,
+  show: true,
   heading: "Get In Touch",
   message:
-    "I'm currently looking for full-time Software Engineering or Machine Learning opportunities! If you know of any positions available, if you have any questions, or if you just want to say hi, please feel free to email me at",
-  email: "hashirshoaeb@gmail.com",
+    "I'm currently looking for internship opportunities for the 2024 Summer! You can get in touch with me at",
+  email: "adamaebrahim@gmail.com",
 };
 
 const experiences = {
